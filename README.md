@@ -6,6 +6,16 @@ We'll be adding other DBs shortly and possibly support for queryable states.
 ## PyCorda.com
 Access docs on PyCorda.com (coming soon)
 
+## Requirements
+
+1. Currently supports 64-bit versions of Python 3 and JVMs only
+2. Drop a database driver jar into your project folder naming it db-driver.jar
+
+## Supported Databases
+In theory every database with a suitable JDBC driver should work. It is confirmed to work with the following databases:
+- H2
+- PostgreSQL
+
 ## Example
 
 ```
@@ -43,21 +53,26 @@ node = Node(url, username, password, path_to_jar)
 ```
 Accepted JDBC urls are in the format jdbc:h2:tcp://hostname:portnumber/path_to_database.
 
-## Managing H2 Jars
+## Managing Database Drivers Jars
 
-An h2.jar file stored locally in the project folder is required. H2Tools allows you to pull
+An db-driver.jar file stored locally in the project folder is required. DBTools allows you to pull
 a jar programmatically. You'll need to do this once, so either manually or programmatically is fine
-as long as the h2.jar file is there.
+as long as the db-driver.jar file is there.
 
-```
+By default, the H2 database driver will be downloaded to the project folder, as below:
+
+```python
 import pycorda as pyc
-h2 = pyc.H2Tools()
+h2 = pyc.DBTools()
 ver = h2.get_latest_version()
 print(ver)
-h2.download_h2jar() # downloads latest h2 jar and stores in local folder as h2.jar
+h2.download_jar() # downloads latest h2 jar and stores in local folder as db-driver.jar
 ```
-
-## Requirements
-
-1. Currently supports 64-bit versions of Python 3 and JVMs only
-2. Drop an H2 jar into your project file naming it h2.jar
+For PostgreSQL:
+```python
+import pycorda as pyc
+pg = pyc.DBTools("pg")
+ver = pg.get_latest_version()
+print(ver)
+pg.download_jar() # downloads latest pg jar and stores in local folder as db-driver.jar
+```

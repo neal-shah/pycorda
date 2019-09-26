@@ -8,15 +8,16 @@ from sklearn import linear_model as lm
 
 # Format for timestamp string is YYYY-MM-DD HH:MM:SS.FFF
 
+
 def plot_time_series(timestamp_column, title=None):
 	"""Plots time series for a given sequence of timestamps
 
 	Parameters
-    ----------
-    timestamp_column : iterable object
-        iterable of timestamp strings in the %Y-%m-%d %H:%M:%S.%f format
-    title : str, optional
-    	figure title
+	----------
+	timestamp_column : iterable object
+		iterable of timestamp strings in the %Y-%m-%d %H:%M:%S.%f format
+	title : str, optional
+		figure title
 	"""
 	dt_list = [datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S.%f') for timestamp in timestamp_column]
 	dates = matplotlib.dates.date2num(dt_list)
@@ -27,17 +28,18 @@ def plot_time_series(timestamp_column, title=None):
 	ax.fmt_xdata = matplotlib.dates.DateFormatter('%Y-%m-%d %H:%M:%S.%f')
 	fig.autofmt_xdate()
 
+
 def plot_ids(ids, fontsize, title=None):
 	"""Plots IDs as labelled equally spaced points
 
 	Parameters
-    ----------
-    ids : iterable object
-        iterable of ID strings
-    fontsize : int
-    	font size of point labels
-    title : str, optional
-    	figure title
+	----------
+	ids : iterable object
+		iterable of ID strings
+	fontsize : int
+		font size of point labels
+	title : str, optional
+		figure title
 	"""
 	sorted_ids = sorted(ids)
 	n = len(ids)
@@ -50,6 +52,7 @@ def plot_ids(ids, fontsize, title=None):
 		ax.annotate(txt, (points[i], 0.001), ha='center', fontsize=fontsize)
 	ax.set_xlim(-0.5, min(5, n))
 
+
 class Plotter(object):
 	"""Plotter object for plotting data obtained from a database node
 
@@ -60,11 +63,11 @@ class Plotter(object):
 
 	def __init__(self, node):
 		"""
-        Parameters
-        ----------
-        node: pycorda.Node
-        	node used to gather data for display
-        """
+		Parameters
+		----------
+		node: pycorda.Node
+			node used to gather data for display
+		"""
 		self.node = node
 
 	def publish_timeseries_fungible_qty_plotly(self, contract, user,api_key):

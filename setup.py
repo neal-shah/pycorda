@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name='pycorda',
-	version='0.5',
+	version='0.6',
 	author='Jamiel Sheikh',
 	packages=['pycorda'],
 	install_requires=[
@@ -13,7 +13,6 @@ setup(
 		'requests',
 		'pyjks',
 		'chart_studio'
-
 	],
 	include_package_data=True,
 )

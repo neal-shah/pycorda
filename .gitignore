@@ -5,6 +5,7 @@ __pycache__/
 *.jar
 test.py
 deploy.sh
+/.idea
 
 # C extensions
 *.so
