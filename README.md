@@ -18,7 +18,7 @@ In theory every database with a suitable JDBC driver should work. It is confirme
 
 ## Example
 
-```
+```python
 import pycorda as pyc
 
 url = 'jdbc:h2:tcp://localhost:52504/node'
@@ -33,21 +33,21 @@ node.close()
 
 To get started using the PyCorda library, install it with
 
-```
+```bash
 pip install pycorda
 ```
 
 If there is a H2 server running with tcp connections allowed,
 then you can connect to a database located at the JDBC url with:
 
-```
+```python
 from pycorda import Node
 node = Node(url, username, password)
 ```
 
 An h2.jar file is required in your projects local folder. If your H2 jar file is elsewhere in your filesystem, try this. This needs to be done only once:
 
-```
+```python
 from pycorda import Node
 node = Node(url, username, password, path_to_jar)
 ```
