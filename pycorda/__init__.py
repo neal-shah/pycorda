@@ -1,2 +1,3 @@
-from .core import Node, DBTools
+from .core import Node
+from .tools import DBTools
 from .stats import Plotter
